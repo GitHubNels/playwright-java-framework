@@ -2,20 +2,21 @@ package base;
 
 import com.microsoft.playwright.*;
 import config.ConfigReader;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 
 public class BaseTest {
 
     protected Playwright playwright;
     protected Browser browser;
     protected BrowserContext context;
-    public Page page;
+    public static Page page;
     String browserName = ConfigReader.getProperty("browser");
     boolean headless = Boolean.parseBoolean(
             ConfigReader.getProperty("headless")
     );
-    @BeforeMethod
+
+    @Before
     public void setUp() {
         playwright = Playwright.create();
 
@@ -29,7 +30,7 @@ public class BaseTest {
         page = context.newPage();
     }
 
-    @AfterMethod
+    @After
     public void tearDown() {
         browser.close();
         playwright.close();

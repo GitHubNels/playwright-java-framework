@@ -9,4 +9,5 @@ public class LoginPageobject extends BaseTest
     public String passwordInput = "#password";
     public String loginButton   = "#submit";
     public String logoutButton = "div.post-content a";
+    public String loginSuccess = "div.post-header h1";
 }

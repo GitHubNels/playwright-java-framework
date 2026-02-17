@@ -3,10 +3,16 @@ package pages;
 import com.microsoft.playwright.Page;
 import config.ConfigReader;
 import objects.LoginPageobject;
+import utils.ExcelUtil;
+import utils.GetExcelData;
+import utils.common;
+
+import java.util.Arrays;
 
 public class LoginPage {
 
   LoginPageobject loginPageobject = new LoginPageobject();
+  common wrap = new common();
 
     private Page page;
 
@@ -41,9 +47,15 @@ public class LoginPage {
         clickLogin();
     }
 
+
     //click logout
     public void clickLogOut()
     {
         page.click(loginPageobject.logoutButton);
+    }
+
+    public String getExcelValue()
+    {
+        return wrap.getExcelValue(1,1);
     }
 }
